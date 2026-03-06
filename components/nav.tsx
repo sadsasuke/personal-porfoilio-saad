@@ -10,7 +10,6 @@ const navItems = [
   { label: "Projects", href: "#projects" },
   { label: "Education", href: "#education" },
   { label: "Skills", href: "#skills" },
-  { label: "Contact", href: "#contact" },
 ]
 
 export function Nav() {
@@ -21,7 +20,7 @@ export function Nav() {
   useEffect(() => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 50)
-      const sections = navItems.map((item) => item.href.slice(1))
+      const sections = [...navItems.map((item) => item.href.slice(1)), "contact"]
       for (let i = sections.length - 1; i >= 0; i--) {
         const el = document.getElementById(sections[i])
         if (el) {
@@ -39,82 +38,102 @@ export function Nav() {
   }, [])
 
   return (
-    <nav
-      className={cn(
-        "fixed top-0 left-0 right-0 z-50 transition-all duration-500",
-        scrolled
-          ? "bg-background/90 backdrop-blur-xl border-b border-border shadow-lg shadow-[#006B3F]/5"
-          : "bg-transparent"
-      )}
-    >
-      <div className="mx-auto max-w-screen-xl flex items-center justify-between px-6 py-4 lg:px-12">
-        <a
-          href="#"
-          className="text-foreground font-semibold tracking-tight text-lg transition-colors hover:text-[#2d8a4e]"
+    <>
+      <div className="fixed top-0 left-0 right-0 z-50 flex justify-center px-4 transition-all duration-500 pointer-events-none mt-4 sm:mt-6">
+        <nav
+          className={cn(
+            "pointer-events-auto transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)]",
+            scrolled
+              ? "bg-[#00a2ff]/10 dark:bg-[#00a2ff]/20 backdrop-blur-2xl border border-[#00a2ff]/30 shadow-2xl shadow-[#00a2ff]/20 rounded-full px-4 sm:px-6 py-2.5 w-full max-w-3xl"
+              : "bg-background/40 backdrop-blur-xl border border-border/40 shadow-xl rounded-full px-4 sm:px-6 py-2.5 w-full max-w-4xl"
+          )}
         >
-          SA<span className="text-[#2d8a4e]">.</span>
-        </a>
+          <div className={cn(
+            "flex items-center justify-between transition-all duration-500 gap-4 sm:gap-8",
+            scrolled ? "mx-0" : "mx-auto"
+          )}>
+            <a
+              href="#"
+              className="text-foreground tracking-tight text-xl font-bold transition-all hover:text-[#00a2ff] hover:scale-105 active:scale-95 shrink-0"
+            >
+              SA<span className="text-[#00a2ff]">.</span>
+            </a>
 
-        <ul className="hidden md:flex items-center gap-8">
-          {navItems.map((item) => (
-            <li key={item.href}>
+            {/* Desktop Navigation */}
+            <ul className="hidden md:flex items-center justify-center space-x-1">
+              {navItems.map((item) => {
+                const isActive = activeSection === item.href.slice(1);
+                return (
+                  <li key={item.href}>
+                    <a
+                      href={item.href}
+                      className={cn(
+                        "relative px-4 py-2 text-sm font-medium transition-all duration-300 rounded-full block",
+                        isActive
+                          ? "text-[#00a2ff] bg-[#00a2ff]/10"
+                          : "text-muted-foreground hover:text-foreground hover:bg-foreground/5 hover:backdrop-blur-sm"
+                      )}
+                    >
+                      {isActive && (
+                        <span className="absolute inset-0 bg-[#00a2ff]/10 rounded-full -z-10 animate-fade-in" />
+                      )}
+                      {item.label}
+                    </a>
+                  </li>
+                );
+              })}
+            </ul>
+
+            {/* CTA & Mobile Toggle */}
+            <div className="flex items-center gap-2 sm:gap-4 shrink-0">
               <a
-                href={item.href}
-                className={cn(
-                  "text-sm tracking-wide transition-all duration-300 relative",
-                  activeSection === item.href.slice(1)
-                    ? "text-[#2d8a4e]"
-                    : "text-muted-foreground hover:text-foreground"
-                )}
+                href="#contact"
+                className="hidden sm:inline-flex items-center justify-center gap-2 rounded-full bg-[#00a2ff] px-6 py-2 text-sm font-medium text-white transition-all hover:bg-[#0077c2] hover:shadow-lg hover:shadow-[#00a2ff]/25 hover:-translate-y-0.5 active:translate-y-0"
               >
-                {item.label}
-                {activeSection === item.href.slice(1) && (
-                  <span className="absolute -bottom-1 left-0 right-0 h-px bg-[#2d8a4e]" />
-                )}
+                Contact
               </a>
-            </li>
-          ))}
-        </ul>
-
-        <div className="flex items-center gap-4">
-          <a
-            href="mailto:saadazhar7@gmail.com"
-            className="hidden md:inline-flex items-center gap-2 rounded-full border border-[#2d8a4e]/30 bg-[#2d8a4e]/10 px-4 py-1.5 text-sm text-[#4ade80] transition-all hover:bg-[#2d8a4e]/20 hover:border-[#2d8a4e]/50"
-          >
-            Get in touch
-          </a>
-          <button
-            onClick={() => setMobileOpen(!mobileOpen)}
-            className="md:hidden text-foreground"
-            aria-label="Toggle menu"
-          >
-            {mobileOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
-          </button>
-        </div>
+              <button
+                onClick={() => setMobileOpen(!mobileOpen)}
+                className="md:hidden flex items-center justify-center w-10 h-10 rounded-full hover:bg-foreground/10 transition-colors text-foreground"
+                aria-label="Toggle menu"
+              >
+                {mobileOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+              </button>
+            </div>
+          </div>
+        </nav>
       </div>
 
+      {/* Mobile Menu Overlay */}
       {mobileOpen && (
-        <div className="md:hidden bg-background/95 backdrop-blur-xl border-b border-border animate-fade-in">
-          <div className="px-6 py-4 space-y-3">
-            {navItems.map((item) => (
-              <a
-                key={item.href}
-                href={item.href}
-                onClick={() => setMobileOpen(false)}
-                className="block text-sm text-muted-foreground hover:text-foreground transition-colors py-2"
-              >
-                {item.label}
-              </a>
-            ))}
+        <div className="fixed inset-0 z-40 bg-background/95 backdrop-blur-xl md:hidden animate-fade-in flex flex-col pt-32 px-6">
+          <div className="flex flex-col gap-6">
+            {navItems.map((item) => {
+              const isActive = activeSection === item.href.slice(1);
+              return (
+                <a
+                  key={item.href}
+                  href={item.href}
+                  onClick={() => setMobileOpen(false)}
+                  className={cn(
+                    "text-4xl font-semibold tracking-tight py-2 border-b border-border/30 transition-colors",
+                    isActive ? "text-[#00a2ff]" : "text-muted-foreground hover:text-foreground hover:pl-2"
+                  )}
+                >
+                  {item.label}
+                </a>
+              )
+            })}
             <a
-              href="mailto:saadazhar7@gmail.com"
-              className="block text-sm text-[#4ade80] py-2"
+              href="#contact"
+              onClick={() => setMobileOpen(false)}
+              className="mt-8 inline-flex items-center justify-center gap-2 rounded-full bg-[#00a2ff] px-8 py-5 text-xl font-medium text-white transition-all hover:bg-[#0077c2]"
             >
-              saadazhar7@gmail.com
+              Get in touch
             </a>
           </div>
         </div>
       )}
-    </nav>
+    </>
   )
 }

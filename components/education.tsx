@@ -2,6 +2,8 @@
 
 import { useInView } from "@/hooks/use-in-view"
 import { cn } from "@/lib/utils"
+import Image from "next/image"
+import { Badge } from "@/components/ui/badge"
 
 const education = [
   {
@@ -17,8 +19,9 @@ const education = [
       "Deep Learning",
       "Information Visualization",
     ],
-    brandColor: "#FFC709",
+    brandColor: "#F59E0B",
     logoLetter: "A!",
+    logoUrl: "/logos/aalto.png"
   },
   {
     institution: "NUST -- NICE",
@@ -26,8 +29,9 @@ const education = [
     period: "2012 -- 2016",
     location: "Pakistan",
     focus: [],
-    brandColor: "#003366",
+    brandColor: "#3B82F6",
     logoLetter: "N",
+    logoUrl: "/logos/nust.png"
   },
 ]
 
@@ -37,18 +41,21 @@ const certifications = [
     issuer: "Neo4j",
     date: "Sep 2025",
     color: "#008CC1",
+    logoUrl: "/logos/neo4j.png"
   },
   {
     title: "Neo4j Fundamentals",
     issuer: "Neo4j",
     date: "Sep 2025",
     color: "#008CC1",
+    logoUrl: "/logos/neo4j.png"
   },
   {
     title: "Azure AI Fundamentals",
     issuer: "Microsoft",
     date: "Apr 2021",
-    color: "#0078D4",
+    color: "#3B82F6",
+    logoUrl: "/logos/microsoft.png"
   },
 ]
 
@@ -64,7 +71,7 @@ export function Education() {
             isInView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
           )}
         >
-          <p className="text-sm font-mono tracking-widest uppercase text-[#2d8a4e] mb-4">
+          <p className="text-sm font-mono tracking-widest uppercase text-[#00a2ff] mb-4">
             Education & Certifications
           </p>
           <h2 className="text-3xl lg:text-4xl font-semibold text-foreground text-balance max-w-2xl">
@@ -72,12 +79,12 @@ export function Education() {
           </h2>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {education.map((edu, i) => (
             <div
               key={edu.institution}
               className={cn(
-                "group relative p-6 sm:p-8 rounded-2xl border border-border bg-card transition-all duration-500 hover:border-transparent",
+                "group relative p-8 sm:p-10 rounded-3xl border border-border/50 bg-card/30 transition-all duration-500 hover:bg-card/60 hover:shadow-xl",
                 isInView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
               )}
               style={{
@@ -86,58 +93,72 @@ export function Education() {
             >
               {/* Hover border glow */}
               <div
-                className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
+                className="absolute inset-0 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none"
                 style={{
-                  boxShadow: `inset 0 0 0 1px ${edu.brandColor}40, 0 0 20px ${edu.brandColor}10`,
+                  boxShadow: `inset 0 0 0 1px ${edu.brandColor}30, 0 0 40px ${edu.brandColor}10`,
                 }}
               />
 
-              <div className="relative">
-                {/* Logo */}
-                <div
-                  className="w-12 h-12 rounded-lg flex items-center justify-center text-lg font-bold mb-6 transition-transform duration-300 group-hover:scale-110"
-                  style={{
-                    backgroundColor: `${edu.brandColor}15`,
-                    color: edu.brandColor,
-                  }}
-                >
-                  {edu.logoLetter}
+              <div className="relative z-10">
+                <div className="flex justify-between items-start mb-8">
+                  {/* Logo */}
+                  {edu.logoUrl ? (
+                    <div className="w-16 h-16 relative rounded-2xl overflow-hidden bg-white shadow-sm ring-1 ring-border/20 group-hover:shadow-md transition-all duration-300">
+                      <Image
+                        src={edu.logoUrl}
+                        alt={`${edu.institution} logo`}
+                        fill
+                        className="object-contain p-2.5 transition-transform duration-500 group-hover:scale-110"
+                        sizes="64px"
+                      />
+                    </div>
+                  ) : (
+                    <div
+                      className="w-16 h-16 rounded-2xl flex items-center justify-center text-xl font-bold transition-all duration-500 group-hover:scale-110 shadow-sm"
+                      style={{
+                        backgroundColor: `${edu.brandColor}15`,
+                        color: edu.brandColor,
+                      }}
+                    >
+                      {edu.logoLetter}
+                    </div>
+                  )}
+
+                  <Badge variant="outline" className="font-mono bg-background/50 text-muted-foreground border-border/50">
+                    {edu.period}
+                  </Badge>
                 </div>
 
-                <h3 className="text-lg font-medium text-foreground">
+                <h3 className="text-2xl font-medium text-foreground mb-2 leading-tight">
                   {edu.degree}
                 </h3>
-                <p className="mt-1 text-sm" style={{ color: edu.brandColor }}>
+                <p className="text-base font-medium flex items-center gap-2" style={{ color: edu.brandColor }}>
                   {edu.institution}
-                  <span className="text-muted-foreground">
-                    {" -- "}{edu.location}
+                  <span className="text-muted-foreground text-sm font-normal">
+                    &middot; {edu.location}
                   </span>
-                </p>
-                <p className="text-sm font-mono text-muted-foreground mt-1">
-                  {edu.period}
                 </p>
 
                 {edu.thesis && (
-                  <p className="mt-4 text-sm text-muted-foreground leading-relaxed">
-                    <span className="text-foreground/70 font-medium">Thesis:</span>{" "}
-                    {edu.thesis}
-                  </p>
+                  <div className="mt-8 pt-6 border-t border-border/50">
+                    <p className="text-sm text-foreground/80 leading-relaxed relative pl-4">
+                      <span className="absolute left-0 top-1.5 w-1 h-1 rounded-full bg-primary/40" />
+                      <span className="text-foreground font-medium mr-2">Thesis:</span>
+                      {edu.thesis}
+                    </p>
+                  </div>
                 )}
 
                 {edu.focus.length > 0 && (
-                  <div className="mt-4 flex flex-wrap gap-2">
+                  <div className="mt-8 flex flex-wrap gap-2">
                     {edu.focus.map((f) => (
-                      <span
+                      <Badge
                         key={f}
-                        className="inline-flex items-center rounded-full px-3 py-1 text-xs font-mono transition-colors duration-300"
-                        style={{
-                          backgroundColor: `${edu.brandColor}10`,
-                          color: `${edu.brandColor}cc`,
-                          border: `1px solid ${edu.brandColor}20`,
-                        }}
+                        variant="secondary"
+                        className="font-normal transition-colors duration-300 bg-secondary/50 hover:bg-secondary"
                       >
                         {f}
-                      </span>
+                      </Badge>
                     ))}
                   </div>
                 )}
@@ -149,36 +170,61 @@ export function Education() {
         {/* Certifications */}
         <div
           className={cn(
-            "mt-12 transition-all duration-700 delay-300",
+            "mt-20 transition-all duration-700 delay-300",
             isInView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
           )}
         >
-          <p className="text-sm font-mono tracking-widest uppercase text-muted-foreground mb-6">
-            Certifications
-          </p>
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+          <div className="flex items-center gap-4 mb-8">
+            <h3 className="text-2xl font-semibold text-foreground">Certifications</h3>
+            <div className="h-[1px] flex-1 bg-border/50" />
+          </div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {certifications.map((cert, i) => (
               <div
-                key={cert.title}
+                key={cert.title + i}
                 className={cn(
-                  "group p-5 rounded-xl border border-border bg-card hover:bg-secondary/50 transition-all duration-500",
+                  "group relative p-6 rounded-2xl border border-border/50 bg-card/30 hover:bg-card/60 transition-all duration-500 hover:shadow-lg flex items-start gap-5",
                   isInView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
                 )}
                 style={{ transitionDelay: `${400 + i * 100}ms` }}
               >
+                {/* Glow left border */}
                 <div
-                  className="w-2 h-2 rounded-full mb-3"
+                  className="absolute left-0 top-0 bottom-0 w-1 rounded-l-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"
                   style={{ backgroundColor: cert.color }}
                 />
-                <p className="text-sm font-medium text-foreground">
-                  {cert.title}
-                </p>
-                <p className="text-xs text-muted-foreground mt-1">
-                  {cert.issuer}
-                </p>
-                <p className="text-xs font-mono text-muted-foreground mt-1">
-                  {cert.date}
-                </p>
+
+                {cert.logoUrl ? (
+                  <div className="w-12 h-12 relative rounded-xl overflow-hidden bg-white shadow-sm ring-1 ring-border/20 shrink-0">
+                    <Image
+                      src={cert.logoUrl}
+                      alt={`${cert.issuer} logo`}
+                      fill
+                      className="object-contain p-2"
+                      sizes="48px"
+                    />
+                  </div>
+                ) : (
+                  <div
+                    className="w-12 h-12 rounded-xl flex items-center justify-center shrink-0"
+                    style={{ backgroundColor: `${cert.color}15` }}
+                  >
+                    <div
+                      className="w-3 h-3 rounded-full"
+                      style={{ backgroundColor: cert.color }}
+                    />
+                  </div>
+                )}
+
+                <div>
+                  <p className="text-base font-medium text-foreground leading-tight group-hover:text-primary transition-colors">
+                    {cert.title}
+                  </p>
+                  <p className="text-sm text-muted-foreground mt-1.5 flex items-center justify-between">
+                    <span>{cert.issuer}</span>
+                    <span className="font-mono text-xs opacity-70">{cert.date}</span>
+                  </p>
+                </div>
               </div>
             ))}
           </div>

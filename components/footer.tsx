@@ -10,7 +10,7 @@ export function Footer() {
             href="https://www.linkedin.com/in/saadazhar7/"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-xs text-muted-foreground hover:text-[#4ade80] transition-colors"
+            className="text-xs text-muted-foreground hover:text-[#7dd3fc] transition-colors"
           >
             LinkedIn
           </a>
@@ -18,13 +18,13 @@ export function Footer() {
             href="https://github.com/sadsasuke"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-xs text-muted-foreground hover:text-[#4ade80] transition-colors"
+            className="text-xs text-muted-foreground hover:text-[#7dd3fc] transition-colors"
           >
             GitHub
           </a>
           <a
-            href="mailto:saadazhar7@gmail.com"
-            className="text-xs text-muted-foreground hover:text-[#4ade80] transition-colors"
+            href="#contact"
+            className="text-xs text-muted-foreground hover:text-[#7dd3fc] transition-colors"
           >
             Email
           </a>

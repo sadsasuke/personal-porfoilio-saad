@@ -24,7 +24,7 @@ const projects: Project[] = [
       "An LLM-powered chat assistant fine-tuned for the construction industry. Understands BIM data, project scheduling, procurement workflows, and construction standards. Built on top of open-source models with RAG pipelines.",
     status: "ongoing",
     tags: ["LLMs", "RAG", "Construction", "Python", "LangChain"],
-    color: "#006B3F",
+    color: "#0c4a6e",
     image: "/images/construction-ai.jpg",
     github: "https://github.com/sadsasuke",
   },
@@ -69,7 +69,7 @@ export function Projects() {
             isInView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
           )}
         >
-          <p className="text-sm font-mono tracking-widest uppercase text-[#2d8a4e] mb-4">
+          <p className="text-sm font-mono tracking-widest uppercase text-[#00a2ff] mb-4">
             Projects
           </p>
           <h2 className="text-3xl lg:text-4xl font-semibold text-foreground text-balance max-w-2xl">
@@ -94,7 +94,7 @@ export function Projects() {
             href="https://github.com/sadsasuke"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-3 rounded-full border border-border bg-card px-6 py-3 text-sm text-foreground transition-all hover:bg-secondary hover:border-[#2d8a4e]/30 hover:shadow-lg hover:shadow-[#2d8a4e]/5"
+            className="inline-flex items-center gap-3 rounded-full border border-border bg-card px-6 py-3 text-sm text-foreground transition-all hover:bg-secondary hover:border-[#00a2ff]/30 hover:shadow-lg hover:shadow-[#00a2ff]/5"
           >
             <Github className="h-4 w-4" />
             View more on GitHub
@@ -143,12 +143,12 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
             className={cn(
               "inline-flex items-center gap-1.5 rounded-full px-3 py-1 text-xs font-mono",
               project.status === "ongoing"
-                ? "bg-[#2d8a4e]/20 text-[#4ade80] border border-[#2d8a4e]/30"
+                ? "bg-[#00a2ff]/20 text-[#7dd3fc] border border-[#00a2ff]/30"
                 : "bg-secondary text-muted-foreground border border-border"
             )}
           >
             {project.status === "ongoing" && (
-              <span className="w-1.5 h-1.5 rounded-full bg-[#4ade80] animate-pulse" />
+              <span className="w-1.5 h-1.5 rounded-full bg-[#7dd3fc] animate-pulse" />
             )}
             {project.status === "ongoing" ? "Ongoing" : "Completed"}
           </span>
@@ -158,7 +158,7 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
       {/* Content */}
       <div className="relative p-6">
         <div className="flex items-start justify-between gap-3">
-          <h3 className="text-lg font-medium text-foreground group-hover:text-[#4ade80] transition-colors">
+          <h3 className="text-lg font-medium text-foreground group-hover:text-[#7dd3fc] transition-colors">
             {project.title}
           </h3>
           {project.github && (

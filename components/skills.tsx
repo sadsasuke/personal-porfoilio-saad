@@ -7,7 +7,7 @@ import { cn } from "@/lib/utils"
 const skillCategories = [
   {
     title: "AI & Machine Learning",
-    color: "#2d8a4e",
+    color: "#00a2ff",
     skills: [
       "Machine Learning",
       "Deep Learning",
@@ -71,7 +71,7 @@ export function Skills() {
             isInView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
           )}
         >
-          <p className="text-sm font-mono tracking-widest uppercase text-[#2d8a4e] mb-4">
+          <p className="text-sm font-mono tracking-widest uppercase text-[#00a2ff] mb-4">
             Skills
           </p>
           <h2 className="text-3xl lg:text-4xl font-semibold text-foreground text-balance max-w-2xl">

@@ -7,7 +7,7 @@ export function Hero() {
   return (
     <section className="relative min-h-screen flex items-center overflow-hidden" id="hero">
       {/* Ambient glows */}
-      <div className="absolute top-1/4 -right-32 w-96 h-96 bg-[#006B3F]/8 rounded-full blur-[120px] animate-glow-pulse pointer-events-none" />
+      <div className="absolute top-1/4 -right-32 w-96 h-96 bg-[#0c4a6e]/8 rounded-full blur-[120px] animate-glow-pulse pointer-events-none" />
       <div className="absolute bottom-1/4 -left-32 w-72 h-72 bg-[#F7941D]/6 rounded-full blur-[100px] animate-glow-pulse animation-delay-500 pointer-events-none" />
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-[#8CC63F]/4 rounded-full blur-[180px] pointer-events-none" />
 
@@ -17,14 +17,14 @@ export function Hero() {
           <div className="order-2 lg:order-1 lg:col-span-7">
             <div className="opacity-0 animate-fade-up">
               <div className="flex items-center gap-3 text-muted-foreground text-sm font-mono tracking-widest uppercase mb-6">
-                <span className="w-8 h-px bg-[#2d8a4e]" />
+                <span className="w-8 h-px bg-[#00a2ff]" />
                 Helsinki, Finland
               </div>
             </div>
 
             <h1 className="opacity-0 animate-fade-up animation-delay-100 text-5xl sm:text-6xl lg:text-7xl xl:text-[5.5rem] font-semibold tracking-tight leading-[1.05] text-foreground text-balance">
               Saad<br />
-              <span className="text-[#2d8a4e]">Azhar</span>
+              <span className="text-[#00a2ff]">Azhar</span>
             </h1>
 
             <p className="opacity-0 animate-fade-up animation-delay-200 mt-6 text-lg sm:text-xl lg:text-2xl text-muted-foreground font-light leading-relaxed max-w-xl">
@@ -37,7 +37,7 @@ export function Hero() {
                 (tag) => (
                   <span
                     key={tag}
-                    className="inline-flex items-center rounded-full border border-[#2d8a4e]/20 bg-[#2d8a4e]/5 px-4 py-1.5 text-xs font-mono text-[#4ade80] transition-all hover:bg-[#2d8a4e]/10 hover:border-[#2d8a4e]/40"
+                    className="inline-flex items-center rounded-full border border-[#00a2ff]/20 bg-[#00a2ff]/5 px-4 py-1.5 text-xs font-mono text-[#7dd3fc] transition-all hover:bg-[#00a2ff]/10 hover:border-[#00a2ff]/40"
                   >
                     {tag}
                   </span>
@@ -48,7 +48,7 @@ export function Hero() {
             <div className="opacity-0 animate-fade-up animation-delay-400 mt-10 flex items-center gap-4">
               <a
                 href="#experience"
-                className="inline-flex items-center gap-2 rounded-full bg-[#2d8a4e] text-[#0a1f0f] px-6 py-3 text-sm font-medium transition-all hover:bg-[#3aab61] hover:shadow-lg hover:shadow-[#2d8a4e]/25"
+                className="inline-flex items-center gap-2 rounded-full bg-[#00a2ff] text-[#0a1f0f] px-6 py-3 text-sm font-medium transition-all hover:bg-[#0077c2] hover:shadow-lg hover:shadow-[#00a2ff]/25"
               >
                 View experience
                 <ArrowDown className="h-4 w-4" />
@@ -57,7 +57,7 @@ export function Hero() {
                 href="https://github.com/sadsasuke"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-10 h-10 rounded-full border border-border flex items-center justify-center text-muted-foreground hover:text-foreground hover:border-[#2d8a4e]/40 transition-all"
+                className="w-10 h-10 rounded-full border border-border flex items-center justify-center text-muted-foreground hover:text-foreground hover:border-[#00a2ff]/40 transition-all"
                 aria-label="GitHub"
               >
                 <Github className="h-4 w-4" />
@@ -66,14 +66,14 @@ export function Hero() {
                 href="https://www.linkedin.com/in/saadazhar7/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-10 h-10 rounded-full border border-border flex items-center justify-center text-muted-foreground hover:text-foreground hover:border-[#2d8a4e]/40 transition-all"
+                className="w-10 h-10 rounded-full border border-border flex items-center justify-center text-muted-foreground hover:text-foreground hover:border-[#00a2ff]/40 transition-all"
                 aria-label="LinkedIn"
               >
                 <Linkedin className="h-4 w-4" />
               </a>
               <a
-                href="mailto:saadazhar7@gmail.com"
-                className="w-10 h-10 rounded-full border border-border flex items-center justify-center text-muted-foreground hover:text-foreground hover:border-[#2d8a4e]/40 transition-all"
+                href="#contact"
+                className="w-10 h-10 rounded-full border border-border flex items-center justify-center text-muted-foreground hover:text-foreground hover:border-[#00a2ff]/40 transition-all"
                 aria-label="Email"
               >
                 <Mail className="h-4 w-4" />
@@ -98,7 +98,7 @@ export function Hero() {
               </div>
 
               {/* Decorative accent corners */}
-              <div className="absolute -top-6 -right-6 w-24 h-24 border-t-2 border-r-2 border-[#2d8a4e]/40 rounded-tr-3xl pointer-events-none" />
+              <div className="absolute -top-6 -right-6 w-24 h-24 border-t-2 border-r-2 border-[#00a2ff]/40 rounded-tr-3xl pointer-events-none" />
               <div className="absolute -bottom-6 -left-6 w-24 h-24 border-b-2 border-l-2 border-[#F7941D]/30 rounded-bl-3xl pointer-events-none" />
             </div>
           </div>

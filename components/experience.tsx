@@ -1,7 +1,9 @@
 "use client"
 
+import { useState, useEffect } from "react"
 import { Badge } from "@/components/ui/badge"
-import { ArrowUpRight } from "lucide-react"
+import { Button } from "@/components/ui/button"
+import { ArrowUpRight, ExternalLink } from "lucide-react"
 import { cn } from "@/lib/utils"
 import { useInView } from "@/hooks/use-in-view"
 import Image from "next/image"
@@ -30,8 +32,8 @@ const experiences: ExperienceItem[] = [
       "Developing scalable ML pipelines for smart building analytics and sustainability optimization.",
     ],
     skills: ["AI/ML", "Data Science", "Smart Buildings", "Energy Systems", "Python"],
-    accentHex: "#006B3F",
-    logoUrl: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-ySGudjs29w8sQw874zv8skG7GjbKh2.png",
+    accentHex: "#F97316",
+    logoUrl: "/logos/granlund.png",
     url: "https://www.granlund.fi",
   },
   {
@@ -45,8 +47,9 @@ const experiences: ExperienceItem[] = [
       "Shape product direction and technical roadmap in close alignment with co-founders.",
     ],
     skills: ["AI/ML", "BIM", "Procurement Automation", "Data Pipelines", "Python"],
-    accentHex: "#00A6FF",
-    logoLetter: "CL",
+    accentHex: "#3B82F6",
+    logoUrl: "/logos/complink.png",
+    url: "https://complink.fi",
   },
   {
     company: "Aiforsite",
@@ -60,7 +63,7 @@ const experiences: ExperienceItem[] = [
     ],
     skills: ["LLMs", "SLAM", "Computer Vision", "Docker", "Prompt Engineering"],
     accentHex: "#26D07C",
-    logoLetter: "Af",
+    logoUrl: "/logos/aiforsite.png",
     url: "https://www.aiforsite.com",
   },
   {
@@ -74,7 +77,7 @@ const experiences: ExperienceItem[] = [
     ],
     skills: ["Generative AI", "Prompt Engineering", "Product Development"],
     accentHex: "#FF6B35",
-    logoLetter: "Wo",
+    logoUrl: "/logos/writeomatic.png",
     url: "https://writeomatic.app",
   },
   {
@@ -87,8 +90,8 @@ const experiences: ExperienceItem[] = [
       "Received hands-on software training and contributed to brand visibility on campus.",
     ],
     skills: ["Tekla Structures", "Public Speaking", "Networking"],
-    accentHex: "#003A70",
-    logoLetter: "T",
+    accentHex: "#3B82F6",
+    logoUrl: "/logos/trimble.png",
     url: "https://www.trimble.com",
   },
   {
@@ -102,8 +105,8 @@ const experiences: ExperienceItem[] = [
       "Served as Aalto Squad Ambassador writing blogs and promoting the university internationally.",
     ],
     skills: ["Computer Vision", "Point Clouds", "3D Camera", "Machine Learning", "Python"],
-    accentHex: "#FFC709",
-    logoLetter: "A!",
+    accentHex: "#F59E0B",
+    logoUrl: "/logos/aalto.png",
     url: "https://www.aalto.fi",
   },
   {
@@ -116,7 +119,7 @@ const experiences: ExperienceItem[] = [
       "Served as Quantity Surveyor on the Metro Bus Project, Islamabad.",
     ],
     skills: ["Construction Management", "BOQ", "Quantity Surveying", "Site Engineering"],
-    accentHex: "#8B6914",
+    accentHex: "#D97706",
     logoLetter: "SC",
   },
   {
@@ -129,13 +132,43 @@ const experiences: ExperienceItem[] = [
       "Conducted topographical surveys and generated contour maps using Civil 3D CAD.",
     ],
     skills: ["GPS", "Topographical Survey", "Civil 3D", "Hydropower"],
-    accentHex: "#0078D4",
-    logoLetter: "YT",
+    accentHex: "#3B82F6",
+    logoUrl: "/logos/ctg.png",
   },
+]
+
+const photoQuotes = [
+  {
+    id: 1,
+    image: "https://images.unsplash.com/photo-1541888086425-d81bb19240f5?q=80&w=2670&auto=format&fit=crop",
+    quote: "Building the future requires a seamless integration of physical infrastructure and artificial intelligence.",
+    tag: "Construction & AI"
+  },
+  {
+    id: 2,
+    image: "https://images.unsplash.com/photo-1677442136019-21780ecad995?q=80&w=2670&auto=format&fit=crop",
+    quote: "Innovation is not just about adopting new tools, but profoundly rethinking how we create and construct.",
+    tag: "Innovation"
+  },
+  {
+    id: 3,
+    image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=2670&auto=format&fit=crop",
+    quote: "The true power of AI lies in its ability to augment human capability across the built environment.",
+    tag: "AI & Data"
+  }
 ]
 
 export function Experience() {
   const { ref, isInView } = useInView(0.05)
+  const [currentSlide, setCurrentSlide] = useState(0)
+
+  // Simple auto-playing carousel using state
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrentSlide((prev) => (prev + 1) % photoQuotes.length)
+    }, 5000)
+    return () => clearInterval(timer)
+  }, [])
 
   return (
     <section id="experience" className="py-24 lg:py-32" ref={ref}>
@@ -146,15 +179,71 @@ export function Experience() {
             isInView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
           )}
         >
-          <p className="text-sm font-mono tracking-widest uppercase text-[#2d8a4e] mb-4">
+          <p className="text-sm font-mono tracking-widest uppercase text-[#00a2ff] mb-4">
             Experience
           </p>
-          <h2 className="text-3xl lg:text-4xl font-semibold text-foreground text-balance max-w-2xl">
-            From structural engineering in Pakistan to AI/ML in Finland
-          </h2>
+          <div className="flex flex-col lg:flex-row justify-between lg:items-end gap-6">
+            <h2 className="text-3xl lg:text-4xl font-semibold text-foreground text-balance max-w-2xl">
+              From structural engineering in Pakistan to AI/ML in Finland
+            </h2>
+            <Button variant="outline" className="w-fit gap-2 group border-primary/20 hover:border-primary">
+              <a href="#projects" className="flex items-center gap-2">
+                View related projects
+                <ArrowUpRight className="h-4 w-4 opacity-70 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+              </a>
+            </Button>
+          </div>
         </div>
 
-        <div className="space-y-1">
+        {/* Photo Quotes Transitions */}
+        <div className={cn(
+          "mb-20 transition-all duration-1000 delay-300 relative rounded-2xl overflow-hidden h-[400px] shadow-2xl group",
+          isInView ? "opacity-100 translate-y-0 scale-100" : "opacity-0 translate-y-12 scale-95"
+        )}>
+          {photoQuotes.map((item, i) => (
+            <div
+              key={item.id}
+              className={cn(
+                "absolute inset-0 transition-opacity duration-1000 ease-in-out",
+                currentSlide === i ? "opacity-100 z-10" : "opacity-0 z-0"
+              )}
+            >
+              <div className="absolute inset-0 bg-black/40 z-10" />
+              <div
+                className="absolute inset-0 bg-cover bg-center transition-transform duration-[10000ms] ease-linear"
+                style={{
+                  backgroundImage: `url('${item.image}')`,
+                  transform: currentSlide === i ? "scale(1.05)" : "scale(1)",
+                }}
+              />
+              <div className="absolute inset-x-0 bottom-0 p-8 lg:p-12 z-20 bg-gradient-to-t from-background/90 via-background/60 to-transparent">
+                <Badge variant="secondary" className="mb-4 bg-primary/20 text-primary hover:bg-primary/30 border-none backdrop-blur-md">
+                  {item.tag}
+                </Badge>
+                <div className="max-w-3xl">
+                  <p className="text-2xl lg:text-3xl font-medium text-white italic drop-shadow-md leading-relaxed">
+                    &quot;{item.quote}&quot;
+                  </p>
+                </div>
+              </div>
+            </div>
+          ))}
+          <div className="absolute bottom-6 right-8 z-30 flex gap-2">
+            {photoQuotes.map((_, i) => (
+              <button
+                key={i}
+                onClick={() => setCurrentSlide(i)}
+                className={cn(
+                  "h-1.5 rounded-full transition-all duration-300",
+                  currentSlide === i ? "w-8 bg-primary" : "w-2 bg-white/50 hover:bg-white/80"
+                )}
+                aria-label={`Go to slide ${i + 1}`}
+              />
+            ))}
+          </div>
+        </div>
+
+        <div className="space-y-4">
           {experiences.map((exp, i) => (
             <ExperienceCard key={exp.company + exp.role} experience={exp} index={i} />
           ))}
@@ -173,44 +262,52 @@ function ExperienceCard({
 }) {
   const { ref, isInView } = useInView(0.1)
 
-  const inner = (
+  return (
     <div
       ref={ref}
       className={cn(
-        "group relative grid grid-cols-1 lg:grid-cols-12 gap-4 lg:gap-8 py-8 lg:py-10 px-4 sm:px-6 -mx-4 sm:-mx-6 rounded-xl transition-all duration-500",
-        "hover:bg-secondary/60",
+        "group relative grid grid-cols-1 lg:grid-cols-12 gap-4 lg:gap-8 py-8 lg:py-10 px-6 sm:px-8 border border-border/50 bg-card/30 rounded-2xl transition-all duration-500",
+        "hover:bg-secondary/40 hover:border-primary/20 hover:shadow-lg",
         isInView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
       )}
       style={{ transitionDelay: `${Math.min(index * 80, 400)}ms` }}
     >
+      {/* Glow effect on hover */}
+      <div
+        className="absolute inset-0 opacity-0 group-hover:opacity-100 pointer-events-none rounded-2xl transition-opacity duration-500"
+        style={{ background: `radial-gradient(circle at 50% 50%, ${experience.accentHex}08 0%, transparent 60%)` }}
+      />
+
       {/* Left accent line on hover */}
       <div
-        className="absolute left-0 top-4 bottom-4 w-0.5 rounded-full transition-all duration-500 opacity-0 group-hover:opacity-100"
+        className="absolute left-0 top-6 bottom-6 w-1 rounded-r-full transition-all duration-500 opacity-0 group-hover:opacity-100"
         style={{ backgroundColor: experience.accentHex }}
       />
 
       {/* Timeline */}
-      <div className="lg:col-span-3 flex flex-col gap-2">
-        <p className="text-sm font-mono text-muted-foreground">
+      <div className="lg:col-span-3 flex flex-col gap-2 relative z-10">
+        <p className="text-sm font-mono text-muted-foreground bg-muted w-fit px-2 py-0.5 rounded-md">
           {experience.period}
         </p>
-        <p className="text-xs text-muted-foreground">{experience.location}</p>
+        <p className="text-xs text-muted-foreground flex items-center gap-1.5 mt-1">
+          {experience.location}
+        </p>
 
         {/* Logo */}
         {experience.logoUrl ? (
-          <div className="mt-2 w-12 h-12 relative rounded-lg overflow-hidden bg-foreground/5 ring-1 ring-border">
+          <div className="mt-4 w-16 h-16 relative rounded-xl overflow-hidden bg-white shadow-sm ring-1 ring-border/20 group-hover:shadow-md transition-all duration-300">
             <Image
               src={experience.logoUrl}
               alt={`${experience.company} logo`}
               fill
-              className="object-contain p-1"
-              sizes="48px"
+              className="object-contain p-2.5 transition-transform duration-500 group-hover:scale-110"
+              sizes="64px"
             />
           </div>
         ) : (
           experience.logoLetter && (
             <div
-              className="mt-2 w-12 h-12 rounded-lg flex items-center justify-center text-sm font-bold transition-transform duration-300 group-hover:scale-110"
+              className="mt-4 w-16 h-16 rounded-xl flex items-center justify-center text-xl font-bold transition-all duration-500 group-hover:scale-110 shadow-sm"
               style={{
                 backgroundColor: `${experience.accentHex}15`,
                 color: experience.accentHex,
@@ -223,65 +320,66 @@ function ExperienceCard({
       </div>
 
       {/* Content */}
-      <div className="lg:col-span-9">
-        <h3 className="text-lg font-medium text-foreground flex items-center gap-2 flex-wrap">
-          {experience.role}
-          <span className="font-normal" style={{ color: experience.accentHex }}>
-            {"at "}
-            {experience.company}
-          </span>
-          {experience.url && (
-            <ArrowUpRight className="h-4 w-4 text-muted-foreground opacity-0 group-hover:opacity-100 transition-all duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-          )}
-        </h3>
+      <div className="lg:col-span-9 relative z-10">
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+          <h3 className="text-xl font-medium text-foreground flex items-center gap-2 flex-wrap">
+            {experience.role}
+            <span className="font-normal" style={{ color: experience.accentHex }}>
+              {"at "}
+              {experience.company}
+            </span>
+          </h3>
 
-        <ul className="mt-4 space-y-2">
+          {experience.url && (
+            <Button variant="ghost" size="sm" className="hidden sm:flex self-start gap-2 h-8 text-xs font-medium hover:bg-background" asChild>
+              <a href={experience.url} target="_blank" rel="noopener noreferrer">
+                Company site
+                <ExternalLink className="w-3 h-3 group-hover/btn:translate-x-0.5 group-hover/btn:-translate-y-0.5 transition-transform" />
+              </a>
+            </Button>
+          )}
+        </div>
+
+        <ul className="mt-5 space-y-3">
           {experience.description.map((desc, i) => (
             <li
               key={i}
-              className="text-sm text-muted-foreground leading-relaxed pl-5 relative"
+              className="text-sm text-foreground/80 leading-relaxed pl-6 relative"
             >
               <span
-                className="absolute left-0 top-[0.55em] w-2 h-2 rounded-full transition-colors duration-300"
-                style={{ backgroundColor: `${experience.accentHex}30` }}
+                className="absolute left-1.5 top-[0.6em] w-1.5 h-1.5 rounded-full transition-colors duration-300 shadow-sm"
+                style={{ backgroundColor: experience.accentHex }}
               />
               {desc}
             </li>
           ))}
         </ul>
 
-        <div className="mt-4 flex flex-wrap gap-2">
+        <div className="mt-6 flex flex-wrap gap-2 items-center">
           {experience.skills.map((skill) => (
             <Badge
               key={skill}
               variant="outline"
-              className="font-mono text-xs font-normal transition-all duration-300"
+              className="font-mono text-xs font-normal transition-all duration-300 bg-background/50 hover:bg-background"
               style={{
-                backgroundColor: `${experience.accentHex}08`,
-                borderColor: `${experience.accentHex}25`,
-                color: `${experience.accentHex}cc`,
+                borderColor: `${experience.accentHex}30`,
+                color: `${experience.accentHex}ee`,
               }}
             >
               {skill}
             </Badge>
           ))}
         </div>
+
+        {experience.url && (
+          <Button variant="outline" size="sm" className="mt-6 sm:hidden w-full gap-2 text-xs" asChild>
+            <a href={experience.url} target="_blank" rel="noopener noreferrer">
+              Company site
+              <ExternalLink className="w-3 h-3" />
+            </a>
+          </Button>
+        )}
       </div>
     </div>
   )
-
-  if (experience.url) {
-    return (
-      <a
-        href={experience.url}
-        target="_blank"
-        rel="noopener noreferrer"
-        className="block"
-      >
-        {inner}
-      </a>
-    )
-  }
-
-  return inner
 }

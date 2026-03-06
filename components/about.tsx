@@ -46,7 +46,7 @@ export function About() {
           <div className="lg:col-span-5">
             <p
               className={cn(
-                "text-sm font-mono tracking-widest uppercase text-[#2d8a4e] mb-8 transition-all duration-700",
+                "text-sm font-mono tracking-widest uppercase text-[#00a2ff] mb-8 transition-all duration-700",
                 isInView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
               )}
             >
@@ -86,7 +86,7 @@ export function About() {
                     onClick={() => setCurrentImageIndex(idx)}
                     className={cn(
                       "w-1.5 h-1.5 rounded-full transition-all",
-                      idx === currentImageIndex ? "bg-[#2d8a4e] w-4" : "bg-white/30 hover:bg-white/50"
+                      idx === currentImageIndex ? "bg-[#00a2ff] w-4" : "bg-white/30 hover:bg-white/50"
                     )}
                     aria-label={`Go to slide ${idx + 1}`}
                   />
@@ -143,7 +143,7 @@ export function About() {
             >
               {stats.map((stat) => (
                 <div key={stat.label}>
-                  <p className="text-3xl font-semibold text-[#2d8a4e]">
+                  <p className="text-3xl font-semibold text-[#00a2ff]">
                     {stat.value}
                   </p>
                   <p className="mt-1 text-sm text-muted-foreground">
