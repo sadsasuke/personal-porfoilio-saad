@@ -47,24 +47,13 @@ export function Contact() {
               {/* Main photo */}
               <div className="relative rounded-2xl overflow-hidden aspect-[3/4]">
                 <Image
-                  src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Azhar-Saad_010-neIMEZo8c5V1NjE4h0UYGVr6vm8n7I.jpg"
+                  src="/images/Azhar-Saad_010_web_pockets.jpg"
                   alt="Saad Azhar"
                   fill
                   className="object-cover object-top"
                   sizes="(max-width: 1024px) 100vw, 40vw"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-background/70 via-transparent to-transparent" />
-              </div>
-
-              {/* Floating secondary photo */}
-              <div className="absolute -bottom-4 -right-4 w-28 h-28 rounded-xl overflow-hidden border-2 border-background shadow-xl ring-1 ring-[#00a2ff]/20">
-                <Image
-                  src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Azhar-Saad_048_nelio-NaBw5cogYAk5k3tF7OVn56f6oVN0xo.jpg"
-                  alt="Saad Azhar portrait"
-                  fill
-                  className="object-cover"
-                  sizes="112px"
-                />
               </div>
             </div>
           </div>
