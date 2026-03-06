@@ -19,39 +19,39 @@ interface Project {
 
 const projects: Project[] = [
   {
-    title: "AI Construction Assistant",
+    title: "Agentic BIM & Point Cloud Reasoning",
     description:
-      "An LLM-powered chat assistant fine-tuned for the construction industry. Understands BIM data, project scheduling, procurement workflows, and construction standards. Built on top of open-source models with RAG pipelines.",
+      "Autonomous AI agents that reason over complex 3D point cloud data and BIM models. Automatically detecting structural discrepancies and orchestrating site inspections with zero human intervention.",
     status: "ongoing",
-    tags: ["LLMs", "RAG", "Construction", "Python", "LangChain"],
+    tags: ["Agentic AI", "Point Clouds", "BIM", "3D Logic"],
+    color: "#00a2ff",
+    image: "/agentic_bim_pointcloud_viz_1772824408748.png",
+  },
+  {
+    title: "AI Construction Agent (Wendy)",
+    description:
+      "An autonomous project manager fine-tuned for the built environment. Navigating BIM-IFC data, managing procurement chains, and automating project scheduling via agentic RAG workflows.",
+    status: "ongoing",
+    tags: ["Agentic AI", "RAG", "Construction", "IFC"],
     color: "#0c4a6e",
-    image: "/images/construction-ai.jpg",
+    image: "/agentic_ai_construction_interface_1772824428901.png",
     github: "https://github.com/sadsasuke",
   },
   {
-    title: "Smart Building Energy Optimizer",
+    title: "Autonomous Site Navigation Systems",
     description:
-      "ML pipeline for predicting and optimizing energy consumption in commercial buildings using IoT sensor data, weather forecasts, and occupancy patterns. Deployed as a real-time dashboard.",
-    status: "ongoing",
-    tags: ["Machine Learning", "IoT", "Energy", "Time Series", "Dashboard"],
-    color: "#F7941D",
-    image: "/images/smart-buildings.jpg",
-  },
-  {
-    title: "Autonomous Path-Finding for Indoor Robots",
-    description:
-      "SLAM-based autonomous navigation system achieving 97% success rate for indoor construction site mapping. Uses LiDAR point cloud processing and real-time obstacle avoidance.",
+      "SLAM-based autonomous navigation agents for construction robotics. Implementing multi-agent path-finding in dynamic, high-uncertainty environments using LiDAR point cloud data.",
     status: "completed",
-    tags: ["SLAM", "Point Clouds", "Computer Vision", "Robotics", "C++"],
+    tags: ["SLAM", "Point Clouds", "Robotics", "Agents"],
     color: "#26D07C",
     image: "/images/data-science.jpg",
   },
   {
-    title: "Concrete Workability Estimation",
+    title: "Computer Vision for Concrete Physics",
     description:
-      "Masters thesis project using a 3D stereo camera system and machine learning to automatically estimate concrete workability from mixing image sequences. Published research.",
+      "Deep learning agents for automated structural quality inspection. Extracting material properties from image sequences using advanced computer vision and neural architectural search.",
     status: "completed",
-    tags: ["Computer Vision", "3D Camera", "ML", "Research", "OpenCV"],
+    tags: ["CV", "Deep Learning", "Quality Control", "Research"],
     color: "#FFC709",
     image: "/images/construction-ai.jpg",
   },

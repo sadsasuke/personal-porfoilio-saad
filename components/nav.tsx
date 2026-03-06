@@ -2,7 +2,8 @@
 
 import { useState, useEffect } from "react"
 import { cn } from "@/lib/utils"
-import { Menu, X } from "lucide-react"
+import { useTheme } from "next-themes"
+import { Menu, X, Sun, Moon } from "lucide-react"
 
 const navItems = [
   { label: "About", href: "#about" },
@@ -13,9 +14,15 @@ const navItems = [
 ]
 
 export function Nav() {
+  const { theme, setTheme } = useTheme()
   const [activeSection, setActiveSection] = useState("")
   const [scrolled, setScrolled] = useState(false)
   const [mobileOpen, setMobileOpen] = useState(false)
+  const [mounted, setMounted] = useState(false)
+
+  useEffect(() => {
+    setMounted(true)
+  }, [])
 
   useEffect(() => {
     const handleScroll = () => {
@@ -86,6 +93,19 @@ export function Nav() {
 
             {/* CTA & Mobile Toggle */}
             <div className="flex items-center gap-2 sm:gap-4 shrink-0">
+              {mounted && (
+                <button
+                  onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
+                  className="w-10 h-10 rounded-full flex items-center justify-center text-muted-foreground hover:text-foreground hover:bg-foreground/5 transition-all bg-background/50 border border-border/30 backdrop-blur-md shadow-sm"
+                  aria-label="Toggle theme"
+                >
+                  {theme === "dark" ? (
+                    <Sun className="h-5 w-5" />
+                  ) : (
+                    <Moon className="h-5 w-5" />
+                  )}
+                </button>
+              )}
               <a
                 href="#contact"
                 className="hidden sm:inline-flex items-center justify-center gap-2 rounded-full bg-[#00a2ff] px-6 py-2 text-sm font-medium text-white transition-all hover:bg-[#0077c2] hover:shadow-lg hover:shadow-[#00a2ff]/25 hover:-translate-y-0.5 active:translate-y-0"

@@ -75,45 +75,6 @@ export function Testimonials() {
             </blockquote>
           ))}
         </div>
-
-        {/* Thematic data science banner */}
-        <div
-          className={cn(
-            "mt-16 relative rounded-2xl overflow-hidden h-56 lg:h-72 transition-all duration-700 delay-300",
-            isInView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-          )}
-        >
-          <Image
-            src="/images/data-science.jpg"
-            alt="Data science and neural network visualization"
-            fill
-            className="object-cover"
-            sizes="100vw"
-          />
-          <div className="absolute inset-0 bg-gradient-to-r from-background via-background/60 to-transparent" />
-          <div className="absolute bottom-0 left-0 right-0 h-20 bg-gradient-to-t from-background to-transparent" />
-          <div className="absolute inset-0 flex items-end p-8 lg:p-12">
-            <div className="flex items-center gap-6">
-              <div className="relative w-20 h-20 rounded-xl overflow-hidden border-2 border-background shadow-xl flex-shrink-0">
-                <Image
-                  src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Azhar-Saad_043_nelio-ETpqvZpQ6hAAkkfbiYq1YJetFUzoHZ.jpg"
-                  alt="Saad Azhar"
-                  fill
-                  className="object-cover"
-                  sizes="80px"
-                />
-              </div>
-              <div>
-                <p className="text-lg font-semibold text-foreground">
-                  Bridging engineering and AI
-                </p>
-                <p className="text-sm text-muted-foreground mt-1">
-                  From hydropower sites to autonomous systems
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
       </div>
     </section>
   )

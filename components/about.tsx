@@ -7,8 +7,8 @@ import { cn } from "@/lib/utils"
 
 const stats = [
   { value: "8+", label: "Years Experience" },
-  { value: "97%", label: "Path-Finding Accuracy" },
-  { value: "3", label: "Languages Spoken" },
+  { value: "Agentic", label: "Architecture" },
+  { value: "BIM", label: "Integration" },
   { value: "MEng", label: "Aalto University" },
 ]
 
@@ -44,14 +44,14 @@ export function About() {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16">
           {/* Left: label + Image Slider */}
           <div className="lg:col-span-5">
-            <p
+            <h2
               className={cn(
-                "text-sm font-mono tracking-widest uppercase text-[#00a2ff] mb-8 transition-all duration-700",
+                "text-3xl lg:text-4xl xl:text-5xl font-semibold text-foreground leading-tight text-balance mb-8 transition-all duration-700",
                 isInView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
               )}
             >
               About
-            </p>
+            </h2>
 
             <div
               className={cn(
@@ -104,11 +104,10 @@ export function About() {
                   isInView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
                 )}
               >
-                I am an engineer with nearly 8 years of experience spanning civil
-                engineering, data science, and AI/ML. My journey has taken me from
-                surveying hydropower sites in Pakistan to building autonomous
-                path-finding algorithms and AI chat models for the construction
-                industry in Finland.
+                I am an agentic systems engineer with nearly 8 years of experience bridging civil
+                engineering and advanced AI. My focus is on creating autonomous agents that
+                understand the physical world—from surveying hydropower sites to building
+                generative AI agents that reason over BIM data and construction workflows.
               </p>
               <p
                 className={cn(
@@ -116,11 +115,10 @@ export function About() {
                   isInView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
                 )}
               >
-                Currently at Granlund working on AI and data-driven solutions for
-                building and energy systems. Previously a Founding Engineer at
-                Complink designing scalable AI/ML solutions for construction workflows,
-                and Data Scientist at Aiforsite leading projects involving computer
-                vision, SLAM algorithms, and large language models.
+                Currently at Granlund, I architect agentic AI solutions for complex building systems.
+                Previously, as a Founding Engineer at Complink and Data Scientist at Aiforsite,
+                I specialized in multi-agent orchestration, BIM (IFC) reasoning, and
+                large-scale point cloud processing for the construction industry.
               </p>
               <p
                 className={cn(

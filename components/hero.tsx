@@ -23,17 +23,17 @@ export function Hero() {
             </div>
 
             <h1 className="opacity-0 animate-fade-up animation-delay-100 text-5xl sm:text-6xl lg:text-7xl xl:text-[5.5rem] font-semibold tracking-tight leading-[1.05] text-foreground text-balance">
-              Saad<br />
-              <span className="text-[#00a2ff]">Azhar</span>
+              Agentic<br />
+              <span className="text-[#00a2ff]">Engineering</span>
             </h1>
 
             <p className="opacity-0 animate-fade-up animation-delay-200 mt-6 text-lg sm:text-xl lg:text-2xl text-muted-foreground font-light leading-relaxed max-w-xl">
-              Founding Engineer & Data Scientist building production-ready AI
-              solutions for the built environment.
+              Building autonomous AI agents and digital twins that reason,
+              orchestrate, and optimize the built environment.
             </p>
 
             <div className="opacity-0 animate-fade-up animation-delay-300 mt-8 flex flex-wrap gap-3">
-              {["Machine Learning", "Computer Vision", "LLMs", "ConTech", "Smart Buildings"].map(
+              {["Agentic AI", "BIM", "Point Clouds", "Computer Vision", "ConTech", "Autonomous Systems"].map(
                 (tag) => (
                   <span
                     key={tag}
@@ -85,7 +85,7 @@ export function Hero() {
           <div className="order-1 lg:order-2 lg:col-span-5 flex justify-center lg:justify-end">
             <div className="opacity-0 animate-scale-in animation-delay-300 relative">
               {/* Main portrait */}
-              <div className="relative w-80 h-[26rem] sm:w-96 sm:h-[32rem] lg:w-[26rem] lg:h-[34rem] rounded-2xl overflow-hidden ring-1 ring-border shadow-2xl">
+              <div className="relative w-80 h-[26rem] sm:w-96 sm:h-[32rem] lg:w-[26rem] lg:h-[34rem] rounded-2xl overflow-hidden ring-1 ring-border shadow-2xl z-10">
                 <Image
                   src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Azhar-Saad_048_web-u7vg2ZwSs9ZSaKVGm1B6BFO5kAtIuQ.jpg"
                   alt="Saad Azhar - full portrait"
@@ -95,6 +95,16 @@ export function Hero() {
                   sizes="(max-width: 768px) 320px, (max-width: 1024px) 384px, 416px"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-background/40 via-transparent to-transparent" />
+              </div>
+
+              {/* Background accent image */}
+              <div className="absolute -inset-16 -z-10 opacity-10 dark:opacity-40 blur-sm pointer-events-none group-hover:opacity-20 dark:group-hover:opacity-60 transition-opacity">
+                <Image
+                  src="/hero_agentic_ai.png"
+                  alt="Agentic AI Visualization"
+                  fill
+                  className="object-contain"
+                />
               </div>
 
               {/* Decorative accent corners */}
